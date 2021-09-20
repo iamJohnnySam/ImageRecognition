@@ -37,33 +37,37 @@ class screenMain(FloatLayout):
         self.buttonLayout = GridLayout(cols=1)
         self.mainLayout.add_widget(self.buttonLayout)
         
-        self.group1 = Label(text='Time of Day')
-        self.buttonLayout.add_widget(self.group1)
+        self.group = Label(text='Select Workout')
+        self.buttonLayout.add_widget(self.group)
         
-        self.dayLayout = GridLayout(cols=4)
-        self.buttonLayout.add_widget(self.dayLayout)
-        self.toggleDay1 = ToggleButton(text = "Morning", group='day', state='down')
-        self.dayLayout.add_widget(self.toggleDay1)
-        self.toggleDay2 = ToggleButton(text = "Afternoon", group='day')
-        self.dayLayout.add_widget(self.toggleDay2)
-        self.toggleDay3 = ToggleButton(text = "Dusk", group='day')
-        self.dayLayout.add_widget(self.toggleDay3)
-        self.toggleDay4 = ToggleButton(text = "Night", group='day')
-        self.dayLayout.add_widget(self.toggleDay4)
-        
-        self.group2 = Label(text='Weather')
-        self.buttonLayout.add_widget(self.group2)
-        
-        self.weatherLayout = GridLayout(cols=4)
-        self.buttonLayout.add_widget(self.weatherLayout)
-        self.toggleWeather1 = ToggleButton(text = "Usual", group='classify', state='down')
-        self.weatherLayout.add_widget(self.toggleWeather1)
-        self.toggleWeather2 = ToggleButton(text = "Unusual", group='classify')
-        self.weatherLayout.add_widget(self.toggleWeather2)
-        #self.toggleWeather3 = ToggleButton(text = "Cloudy", group='classify')
-        #self.weatherLayout.add_widget(self.toggleWeather3)
-        #self.toggleWeather4 = ToggleButton(text = "Fog", group='classify')
-        #self.weatherLayout.add_widget(self.toggleWeather4)
+
+        self.ButLayout = GridLayout(cols=4)
+        self.buttonLayout.add_widget(self.ButLayout)
+
+        self.toggleAction1 = ToggleButton(text = "Vacant", group='classify', state='down')
+        self.ButLayout.add_widget(self.toggleAction1)
+        self.toggleAction2 = ToggleButton(text = "Idle", group='classify')
+        self.ButLayout.add_widget(self.toggleAction2)
+        self.toggleAction3 = ToggleButton(text = "Crunches", group='classify')
+        self.ButLayout.add_widget(self.toggleAction3)
+        self.toggleAction4 = ToggleButton(text = "Elliptical", group='classify')
+        self.ButLayout.add_widget(self.toggleAction4)
+        self.toggleAction5 = ToggleButton(text = "Deadlifts", group='classify')
+        self.ButLayout.add_widget(self.toggleAction5)
+        self.toggleAction6 = ToggleButton(text = "Squats", group='classify')
+        self.ButLayout.add_widget(self.toggleAction6)
+        self.toggleAction7 = ToggleButton(text = "Fly", group='classify')
+        self.ButLayout.add_widget(self.toggleAction7)
+        self.toggleAction8 = ToggleButton(text = "Benches", group='classify')
+        self.ButLayout.add_widget(self.toggleAction8)
+        self.toggleAction9 = ToggleButton(text = "Bullworker", group='classify')
+        self.ButLayout.add_widget(self.toggleAction9)
+        self.toggleAction10 = ToggleButton(text = "Pushups", group='classify')
+        self.ButLayout.add_widget(self.toggleAction10)
+        self.toggleAction11 = ToggleButton(text = "Stretching", group='classify')
+        self.ButLayout.add_widget(self.toggleAction11)
+        self.toggleAction12 = ToggleButton(text = "N/A", group='classify')
+        self.ButLayout.add_widget(self.toggleAction12)
         
         self.submitLabel = Label(text='Submit results for ' + images[i])
         self.buttonLayout.add_widget(self.submitLabel)
@@ -81,10 +85,30 @@ class screenMain(FloatLayout):
     def pressed_buttonSubmit (self, instance):
         global i
         folder = 0
-        if tog(self.toggleWeather1.state):
+        if tog(self.toggleAction1.state):
             folder = 0
-        elif tog(self.toggleWeather2.state):
+        elif tog(self.toggleAction2.state):
             folder = 1
+        elif tog(self.toggleAction3.state):
+            folder = 2
+        elif tog(self.toggleAction4.state):
+            folder = 3
+        elif tog(self.toggleAction5.state):
+            folder = 4
+        elif tog(self.toggleAction6.state):
+            folder = 5
+        elif tog(self.toggleAction7.state):
+            folder = 6
+        elif tog(self.toggleAction8.state):
+            folder = 7
+        elif tog(self.toggleAction9.state):
+            folder = 8
+        elif tog(self.toggleAction10.state):
+            folder = 9
+        elif tog(self.toggleAction11.state):
+            folder = 10
+        elif tog(self.toggleAction12.state):
+            folder = 11
         shutil.move(path + images[i], path2 + str(folder) + "\\" + images[i])
 
         i = i+1
