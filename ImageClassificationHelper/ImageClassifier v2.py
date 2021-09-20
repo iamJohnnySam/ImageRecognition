@@ -1,10 +1,6 @@
 from os import listdir
 from os.path import isfile, join
 import shutil
-from PIL import Image
-
-import csv
-logfile = "Output.csv"
 
 # Import Kivy Libraries
 from kivy.app import App
@@ -79,9 +75,6 @@ class screenMain(FloatLayout):
         self.imageLayout = GridLayout(cols=1)
         self.mainLayout.add_widget(self.imageLayout)
         
-        im = Image.open(path + images[i])
-        im = im.rotate(270, expand=True)
-        im.save (path + images[i])
         self.image = Image(source = path + images[i] , allow_stretch = False, keep_ratio = True)
         self.imageLayout.add_widget(self.image)
         
@@ -92,19 +85,11 @@ class screenMain(FloatLayout):
             folder = 0
         elif tog(self.toggleWeather2.state):
             folder = 1
-        shutil.move(path + images[i], path2 + folder + "\\" + images[i])
-    
-        with open(logfile, "a", newline='') as fp:
-            wr = csv.writer(fp, dialect = 'excel')
-            wr.writerow((images[i], tog(self.toggleDay1.state),tog(self.toggleDay2.state),tog(self.toggleDay3.state),tog(self.toggleDay4.state),
-                         tog(self.toggleWeather1.state),tog(self.toggleWeather2.state),tog(self.toggleWeather3.state),tog(self.toggleWeather4.state)))
-                        
+        shutil.move(path + images[i], path2 + str(folder) + "\\" + images[i])
+
         i = i+1
         
         try:
-            im = Image.open(path + images[i])
-            im = im.rotate(270, expand=True)
-            im.save (path + images[i])
             self.image.source = path + images[i]
             self.submitLabel.text = 'Submit results for ' + images[i]
         except:
