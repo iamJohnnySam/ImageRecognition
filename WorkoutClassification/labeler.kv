@@ -1,0 +1,122 @@
+workoutWindow:
+
+<workoutWindow>:
+    orientation: "vertical"
+    
+    Label:
+        text: "[b]iamJohnnySam[/b] | Workout Image Classification Helper"
+        font_size: "25dp"
+        size_hint: 1, None
+        height: "40dp"
+        markup: True
+
+    BoxLayout:
+        Image:
+            source: root.path
+            allow_stretch: False
+            keep_ratio: True
+
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 2
+
+            Label:
+                text: root.path
+                size_hint: 1, None
+                height: "40dp"
+
+            Label:
+                text: root.imageCount
+                size_hint: 1, None
+                height: "40dp"
+
+            BoxLayout:
+                size_hint: 1, None
+                height: "120dp"
+                
+                Label:
+                    text: root.aiGuess
+                    text_size: self.size
+                    halign: 'center'
+                    valign: 'middle'
+                
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: None, 1
+                    width: "120dp"
+
+                    Label:
+                        text: "Let AI takeover"
+
+                    Switch:
+                        id: aiControl
+
+            GridLayout:
+                cols: 4
+
+                ToggleButton:
+                    id: bt0
+                    text: "Vacant"
+                    group: "Classify"
+                    state: "down"
+
+                ToggleButton:
+                    id: bt1
+                    text: "Idle"
+                    group: "Classify"
+
+                ToggleButton:
+                    id: bt2
+                    text: "Elliptical"
+                    group: "Classify"
+
+                ToggleButton:
+                    id: bt3
+                    text: "Crunches"
+                    group: "Classify"
+
+                ToggleButton:
+                    id: bt4
+                    text: "Weights"
+                    group: "Classify"
+
+                ToggleButton:
+                    id: bt5
+                    text: "Squats"
+                    group: "Classify"
+
+                ToggleButton:
+                    id: bt6
+                    text: "Fly"
+                    group: "Classify"
+
+                ToggleButton:
+                    id: bt7
+                    text: "Benches"
+                    group: "Classify"
+
+                ToggleButton:
+                    id: bt8
+                    text: "Bullworker"
+                    group: "Classify"
+
+                ToggleButton:
+                    id: bt9
+                    text: "Pushups"
+                    group: "Classify"
+
+                ToggleButton:
+                    id: bt10
+                    text: "Stretching"
+                    group: "Classify"
+
+                ToggleButton:
+                    id: bt11
+                    text: "N/A"
+                    group: "Classify"
+
+            Button:
+                text: "Commit"
+                size_hint: 1, None
+                height: "100dp"
+                on_press: root.submit(bt0, bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt10, bt11)
